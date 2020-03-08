@@ -51,8 +51,8 @@ t1 = BashOperator(task_id="print_date", bash_command="date", dag=dag)
 
 # Test with:
 # poetry run airflow test foobar sleep 2015-06-01
-# the "2015-06-01" is required and tells airflow to simulate that the task executed
-# on that date
+# the "2015-06-01" is the execution_date, which tells airflow to simulate task execution
+# on that previous date / time
 t2 = BashOperator(
     task_id="sleep", depends_on_past=False, bash_command="sleep 5", retries=3, dag=dag
 )
